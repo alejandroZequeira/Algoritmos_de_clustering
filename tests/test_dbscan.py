@@ -17,16 +17,13 @@ def dem():
 async def main():
     with AxoContextManager.distributed(endpoint_manager=dem()) as dcm:
         dbscan_model: DBSCANClustering = DBSCANClustering(eps=1.5, min_samples=2)
-        
-        # Generamos datos de prueba
+
         dbscan_model.generate_data(n_samples=30, centers=3)
-        
-        # Persistimos
+
         _ = await dbscan_model.persistify()
         
-        # Aplicamos DBSCAN
-        resultados = dbscan_model.apply_dbscan()  # ya self.X tiene datos
-        print(resultados)
+
+        resultados = dbscan_model.apply_dbscan()  
         
 
 if __name__ == "__main__":

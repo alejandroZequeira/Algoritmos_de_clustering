@@ -16,22 +16,20 @@ def dem():
     return dem
 
 async def main():
-    # Abrimos contexto distribuido
+
     with AxoContextManager.distributed(endpoint_manager=dem()) as dcm:
-        # Generamos datos de prueba
+
         np.random.seed(42)
         data = np.random.normal(loc=50, scale=5, size=30)
 
-        # Creamos la instancia del test
+
         t_test: OneSampleTTest = OneSampleTTest(data=data, pop_mean=50, alpha=0.05, tail='two-tailed')
 
-        # Persistimos en Axo
         _ = await t_test.persistify()
 
-        # Ejecutamos el test
         results = t_test.run_distributed_test()
 
-        # Mostramos resultados
+
         print("\n[TEST One-sample t-test] Resultados:")
         for key, value in results.items():
             print(f"{key}: {value}")

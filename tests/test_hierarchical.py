@@ -21,7 +21,7 @@ def dem():
 async def main():
     with AxoContextManager.distributed(endpoint_manager=dem()) as dcm:
          hierar_model:HierarchicalClustering = HierarchicalClustering()
-        # Instancia del modelo
+
          hierar_model = HierarchicalClustering(method="ward")
          data = np.array([
             [1, 2], [1, 4], [1, 0],
@@ -31,10 +31,10 @@ async def main():
         ])
     hierar_model.set_data(data)
 
-            # Persistimos el objeto en Axo
+
     _ = await hierar_model.persistify()
 
-        # Ejecutamos clustering jerárquico
+
     clusters = hierar_model.run(n_clusters=3)
     print(f"[TEST] Clusters encontrados: {clusters}")
 
