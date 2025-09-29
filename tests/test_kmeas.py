@@ -30,7 +30,7 @@ async def test_create_kmeas():
         result = kmeans_model.aplicar_kmeans(columnas=["X", "Y"], n_clusters=3)
         print(result)
         
-        kmeans_model.ver_datos()
+        #kmeans_model.ver_datos()
 
         # plt.figure(figsize=(8,6))
         # for cluster in range(3):

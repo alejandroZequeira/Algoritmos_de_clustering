@@ -23,6 +23,8 @@ passlib = "^1.7.4"
 pandas = "^2.3.2"
 scikit-learn = "^1.7.1"
 matplotlib = "^3.10.5"
+seaborn = "^0.13.2"
+pytest = "^8.4.2"
 
 [[tool.poetry.source]]
 name = "testpypi"
